@@ -20,11 +20,11 @@ function App() {
     if (e.key === 'Enter') {
       try {
         setIsLoading(true); // Set loading to true when initiating API calls
-        fetch(`https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${key}`)//get puuid from summoner name
+        fetch(`https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${key}`)//get puuid from summoner name, replace this with accountV1 get account by riotID
         .then(response => response.json())
         .then(res => {
           puuid = res.puuid;
-          return fetch(`https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=20&api_key=${key}`);//get list of matchIds from puuid
+          return fetch(`https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=20&api_key=${key}`);//get list of matchIds from puuid, this should in theory remain the same.
         })
         .then(response => response.json())
         .then(res => {
