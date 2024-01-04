@@ -14,7 +14,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false); // Add loading state
 
 
-  var puuid:any;
+  let puuid:any;
 
   const handleKeyPress = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
@@ -44,7 +44,7 @@ function App() {
               const data = await response.json();
               let participants = data.info.participants;
         
-              for (var i = 0; i < participants.length; i++) {
+              for (let i = 0; i < participants.length; i++) {
                 console.log(participants[i].puuid);
                 if (puuid === participants[i].puuid) {
                   console.log('found');
