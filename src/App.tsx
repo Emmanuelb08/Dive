@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { key } from './apiKey';
+import Navbar from './components/Navbar';
+import Matchhistory from './components/Matchhistory';
 
 interface Match {
   id: any;
@@ -12,6 +14,7 @@ function App() {
   const [matchIds, setMatchIds] = useState([]);
   const [summonerName, setSummonerName] = useState('');
   const [isLoading, setIsLoading] = useState(false); // Add loading state
+  const [show, setShow] = useState(true);
 
 
   let puuid:any;
@@ -78,6 +81,7 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar />
       <h1>Welcome to Dive!</h1>
 
       {/* Input box for summoner name */}
@@ -93,14 +97,16 @@ function App() {
       {isLoading && <p>Loading...</p>}
 
       {/* Display the match IDs */}
-      <div>
+
+      <Matchhistory summonerName = {summonerName} />
+      {/* <div>
         <h2>Match History:</h2>
         <ul>
           {matches.map(match => (
             <li style={{color:  match.win ? "deepskyblue " : "red"}} key={match.id}>{match.name}</li>
           ))}
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 }
