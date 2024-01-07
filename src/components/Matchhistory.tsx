@@ -3,6 +3,7 @@ import {key} from '../apiKey';
 
 type Props = {
     summonerName:string
+    refresh:number
 }
 
 interface Match {
@@ -11,7 +12,7 @@ interface Match {
     win: any;
   }
 
-const Matchhistory: React.FC<Props> = ({summonerName}) => {
+const Matchhistory: React.FC<Props> = ({summonerName, refresh}) => {
 
     
   const [matches, setMatches] = useState<{ id: any; name: any; win: any; }[]>([]);
@@ -58,7 +59,7 @@ const Matchhistory: React.FC<Props> = ({summonerName}) => {
     };
 
     fetchData(); // Call the function to fetch data when the component is rendered
-  }, [summonerName]); // Ensure useEffect runs when summonerName changes
+  }, [refresh]); // Ensure useEffect runs when refresh changes
 
 
     return (  

@@ -12,6 +12,9 @@ interface Match {
 function App() {
   const [show, setShow] = useState(false);
   const [summonerName, setSummonerName] = useState('');
+  const [refresh, setRefresh] = useState(0);
+
+
 
 
   return (
@@ -27,7 +30,13 @@ function App() {
         onChange={(e) => setSummonerName(e.target.value)}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
-            setShow(!show);
+            if (show) {
+              // Refresh the component by updating the refresh value
+              setRefresh(refresh + 1);
+              
+            } else {
+              setShow(true);
+            }
           }
         }}
       />
@@ -36,7 +45,7 @@ function App() {
 
       {/* Display the match IDs */}
 
-      {show && <Matchhistory summonerName = {summonerName} />}
+      {show && <Matchhistory summonerName = {summonerName} refresh={refresh} />}
       {/* <div>
         <h2>Match History:</h2>
         <ul>
